@@ -108,11 +108,11 @@ The two Navigator components are otherwise identical — a refactor opportunity.
 
 | Package | Current | Latest | Notes |
 |---|---|---|---|
-| `typescript` | `^4.5.2` | `^6.0.3` | Two major versions behind |
+| `typescript` | `^6.0.3` | `^6.0.3` | Up to date |
 | `react` | `18.2.0` | `19.2.5` | Major version behind |
 | `react-native` | `0.71.3` | `0.85.2` | Very outdated; several breaking changes |
-| `@react-navigation/bottom-tabs` | `^6.3.1` | `^7.15.10` | v7 has breaking API changes |
-| `@react-navigation/native` | `^6.0.10` | `^7.2.2` | Breaking changes in v7 |
+| `@react-navigation/bottom-tabs` | `^7.15.10` | `^7.15.10` | Up to date |
+| `@react-navigation/native` | `^7.2.2` | `^7.2.2` | Up to date |
 | `react-native-svg` | `^13.8.0` | `^15.15.4` | Two major versions behind |
 | `react-native-size-scaling` | `^0.5.1` | `^0.5.4` | Minor |
 | `eslint` | `^8.4.1` | `^10.2.1` | ESLint 9/10 uses flat config |

@@ -1,4 +1,7 @@
-import type { BottomTabNavigationOptions } from '@react-navigation/bottom-tabs';
+import type {
+  BottomTabNavigationOptions,
+  BottomTabNavigationProp,
+} from '@react-navigation/bottom-tabs';
 import type { ParamListBase, RouteProp } from '@react-navigation/native';
 import type React from 'react';
 import type { StyleProp, ViewStyle } from 'react-native';
@@ -43,7 +46,7 @@ export interface NavigatorBottomBarProps {
     | BottomTabNavigationOptions
     | ((props: {
         route: RouteProp<ParamListBase>;
-        navigation: any;
+        navigation: BottomTabNavigationProp<ParamListBase>;
       }) => BottomTabNavigationOptions);
   backBehavior?: 'firstRoute' | 'initialRoute' | 'order' | 'history' | 'none';
 }

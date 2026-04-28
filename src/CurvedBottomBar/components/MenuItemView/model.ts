@@ -1,8 +1,9 @@
-import type { RouteConfig, ParamListBase } from '@react-navigation/native';
+import type { BottomTabNavigationOptions } from '@react-navigation/bottom-tabs';
+import type React from 'react';
 
-type MenuItem = {
+export interface ScreenBottomBarProps {
+  name: string;
   position: 'LEFT' | 'RIGHT' | 'CIRCLE' | 'CENTER';
-};
-type RouteConfigComponent = RouteConfig<ParamListBase, any, any, any, any>;
-
-export type ScreenBottomBarProps = RouteConfigComponent & MenuItem;
+  component: React.ComponentType<any>;
+  options?: BottomTabNavigationOptions;
+}

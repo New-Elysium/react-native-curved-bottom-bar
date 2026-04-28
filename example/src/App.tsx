@@ -1,9 +1,7 @@
 import { NavigationContainer } from '@react-navigation/native';
 import React, { useMemo, useRef, useState } from 'react';
 import { StatusBar, Text, TouchableOpacity, View } from 'react-native';
-import {
-  CurvedBottomBar,
-} from 'react-native-curved-bottom-bar';
+import { CurvedBottomBar } from 'react-native-curved-bottom-bar';
 import type { ICurvedBottomBarRef } from 'react-native-curved-bottom-bar';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { StyleSheet } from 'react-native-size-scaling';

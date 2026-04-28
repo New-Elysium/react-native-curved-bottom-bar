@@ -1,5 +1,5 @@
-import { StyleProp } from 'react-native';
-import { ViewStyle } from 'react-native';
+import type React from 'react';
+import type { StyleProp, ViewStyle } from 'react-native';
 
 interface ICurvedView {
   style?: StyleProp<ViewStyle>;

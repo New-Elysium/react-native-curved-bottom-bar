@@ -18,7 +18,17 @@ or
 ```js
 yarn add react-native-curved-bottom-bar
 ```
-Now we need to install [react-native-svg](https://github.com/react-native-svg/react-native-svg) and [@react-navigation/bottom-tabs](https://reactnavigation.org/docs/bottom-tab-navigator).
+Now we need to install the required peer dependencies:
+
+```js
+npm install @react-navigation/native @react-navigation/bottom-tabs react-native-screens react-native-safe-area-context react-native-svg
+```
+or
+```js
+yarn add @react-navigation/native @react-navigation/bottom-tabs react-native-screens react-native-safe-area-context react-native-svg
+```
+
+> **React Navigation v7** — `@react-navigation/bottom-tabs` v7 requires `@react-navigation/native`, `react-native-screens ≥ 4`, and `react-native-safe-area-context ≥ 4`. Follow the [React Navigation getting started guide](https://reactnavigation.org/docs/getting-started) for additional native setup steps.
 
 ## Demo
 
@@ -32,31 +42,35 @@ Now we need to install [react-native-svg](https://github.com/react-native-svg/re
 
 ### CurvedBottomBar.Navigator
 
-| Props              | Params                                                | isRequire | Description                                                       |
-|--------------------|-------------------------------------------------------| --------- |-------------------------------------------------------------------|
-| type               | 'DOWN' or 'UP'                                        | Yes       | Type of the center tab item, downward curve or upward curve       |
-| circlePosition     | 'CENTER' or 'LEFT' or 'RIGHT'                         | No        | Position of circle button                                         |
-| initialRouteName   | String                                                | Yes       | The name of the route to render on first load of the navigator    |
-| tabBar             | ({ routeName, selectedTab, navigate }) => JSX.Element | Yes       | Function that returns a React element to display as the tab bar   |
-| renderCircle       | ({ routeName, selectedTab, navigate }) => JSX.Element | Yes       | Function that returns a React element to display as the center tab item |
-| circleWidth        | Number                                                | No        | Customize width of the center tab item. Minimum is 50px and Maximum is 60px 
-| style              | ViewStyle                                             | No        | Styling for container view                                        |
-| shadowStyle        | ViewStyle                                             | No        | Styling for shadow view.                                          |
-| width              | Number                                                | No        | Customize width for container view                                |
-| height             | Number                                                | No        | Customize height for container view, Minimum is 50px and Maximum is 90px |
-| borderTopLeftRight | Boolean                                               | No        | Border radius top left and top right of container view            |
-| borderColor        | String                                                | No        | Border color                                                      |
-| borderWidth        | Number                                                | No        | Border width                                                      |
-| bgColor            | String                                                | No        | Background color of container view                                |
+| Props              | Params                                                          | isRequire | Description                                                                         |
+|--------------------|-----------------------------------------------------------------|-----------|-------------------------------------------------------------------------------------|
+| initialRouteName   | String                                                          | Yes       | The name of the route to render on first load of the navigator                      |
+| renderCircle       | ({ routeName, selectedTab, navigate }) => React.ReactElement    | Yes       | Function that returns a React element to display as the center tab item             |
+| type               | 'DOWN' or 'UP'                                                  | No        | Type of the center tab item, downward curve or upward curve. Default: `'DOWN'`      |
+| circlePosition     | 'CENTER' or 'LEFT' or 'RIGHT'                                   | No        | Position of circle button. Default: `'CENTER'`                                      |
+| tabBar             | ({ routeName, selectedTab, navigate }) => React.ReactElement    | No        | Function that returns a React element to display as a tab bar icon                  |
+| circleWidth        | Number                                                          | No        | Customize width of the center tab item. Minimum is 50px and Maximum is 60px         |
+| style              | ViewStyle                                                       | No        | Styling for container view                                                          |
+| shadowStyle        | ViewStyle                                                       | No        | Styling for shadow view. Not supported in Expo — use `CurvedBottomBarExpo` instead  |
+| width              | Number                                                          | No        | Customize width for container view                                                  |
+| height             | Number                                                          | No        | Customize height for container view. Minimum is 50px and Maximum is 90px            |
+| borderTopLeftRight | Boolean                                                         | No        | Border radius top left and top right of container view                              |
+| borderColor        | String                                                          | No        | Border color                                                                        |
+| borderWidth        | Number                                                          | No        | Border width                                                                        |
+| bgColor            | String                                                          | No        | Background color of container view                                                  |
+| id                 | String                                                          | No        | Optional navigator ID (React Navigation v7)                                         |
+| screenOptions      | BottomTabNavigationOptions or function                          | No        | Default options for all screens (React Navigation v7)                               |
+| backBehavior       | 'firstRoute' \| 'initialRoute' \| 'order' \| 'history' \| 'none' | No      | Behaviour of back button (React Navigation v7). Default: `'firstRoute'`             |
 
 
 ### CurvedBottomBar.Screen
 
-| Props              | Params                        | isRequire | Description                                                                               |
-| ------------------ | ----------------------------- | --------- | ----------------------------------------------------------------------------------------- |
-| name               | String                        | Yes       | Name of the route to jump to                                                              |
-| position           | 'LEFT' or 'RIGHT' or 'CIRCLE' | Yes       | Set position of tabbar icon to the left or right of the circle button. Use type "CIRCLE" only when you want the circle button is a tabview |
-| component          | (props) => JSX.Element        | Yes       | Screen params to merge into the destination route                                         |
+| Props     | Params                                      | isRequire | Description                                                                                                                                                |
+|-----------|---------------------------------------------|-----------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| name      | String                                      | Yes       | Name of the route                                                                                                                                          |
+| position  | 'LEFT' or 'RIGHT' or 'CIRCLE' or 'CENTER'   | Yes       | Position of the tab icon. Use `'CIRCLE'` or `'CENTER'` when the circle button should itself be a navigable tab view                                        |
+| component | React.ComponentType                         | Yes       | Component to render for this screen                                                                                                                        |
+| options   | BottomTabNavigationOptions                  | No        | Screen-level navigation options                                                                                                                            |
 
 ### API
 | Function           | Params                        | Description                                                                               |

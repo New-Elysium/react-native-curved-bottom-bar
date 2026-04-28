@@ -61,8 +61,8 @@
     "@commitlint/config-conventional": "^17.0.2",
     "@evilmartians/lefthook": "^1.2.2",
     "@react-native-community/eslint-config": "^3.0.2",
-    "@react-navigation/bottom-tabs": "^6.3.1",
-    "@react-navigation/native": "^6.0.10",
+    "@react-navigation/bottom-tabs": "^7.0.0",
+    "@react-navigation/native": "^7.2.2",
     "@release-it/conventional-changelog": "^5.0.0",
     "@types/d3-shape": "^3.1.1",
     "@types/jest": "^28.1.2",
@@ -82,16 +82,17 @@
     "react-native-builder-bob": "^0.20.0",
     "react-native-svg": "^13.8.0",
     "release-it": "^15.0.0",
-    "typescript": "^4.5.2"
+    "typescript": "^6.0.3"
   },
   "resolutions": {
     "@types/react": "17.0.21"
   },
   "peerDependencies": {
-    "@react-navigation/bottom-tabs": "*",
+    "@react-navigation/bottom-tabs": "^7.0.0",
     "react": "*",
     "react-native": "*",
-    "react-native-svg": "*"
+    "react-native-svg": "*",
+    "@react-navigation/native": "^7.0.0"
   },
   "engines": {
     "node": ">= 16.0.0"

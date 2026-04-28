@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import { Path, Svg } from 'react-native-svg';
-import { CurvedView } from './model';
+import type { CurvedView } from './model';
 
 const CurvedContainer: CurvedView = (props) => {
   const { style, width, height, bgColor, path, borderColor, borderWidth } =

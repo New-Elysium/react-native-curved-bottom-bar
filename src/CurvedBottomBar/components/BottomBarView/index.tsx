@@ -33,7 +33,7 @@ const BottomBarComponent = React.forwardRef<
     type = 'DOWN',
     circlePosition = 'CENTER',
     style,
-    width = null,
+    width = undefined,
     height = 65,
     circleWidth = 50,
     bgColor = 'gray',

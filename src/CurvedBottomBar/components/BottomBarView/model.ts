@@ -5,6 +5,7 @@ import type {
 import type { ParamListBase, RouteProp } from '@react-navigation/native';
 import type React from 'react';
 import type { StyleProp, ViewStyle } from 'react-native';
+import type { GlassEffectStyle } from '../GlassBackground';
 
 export interface ICurvedBottomBarRef {
   setVisible: (visible: boolean) => void;
@@ -39,6 +40,16 @@ export interface NavigatorBottomBarProps {
   defaultScreenOptions?: BottomTabNavigationOptions;
   renderCircle: (props: CircleRenderProps) => React.ReactElement;
   tabBar?: (props: CircleRenderProps) => React.ReactElement;
+  /**
+   * Opt-in to Apple's Liquid Glass material (iOS 26+). Requires the optional
+   * peer dependency `expo-glass-effect`. On unsupported platforms / versions
+   * this is a no-op and the tab bar renders with its normal background.
+   * When enabling, consider passing `bgColor="transparent"` so the SVG fill
+   * does not occlude the glass underneath.
+   */
+  enableGlassEffect?: boolean;
+  /** Variant of the Liquid Glass material to use. Defaults to `'regular'`. */
+  glassEffectStyle?: GlassEffectStyle;
   // React Navigation Tab.Navigator pass-through props
   children?: React.ReactNode;
   id?: string;

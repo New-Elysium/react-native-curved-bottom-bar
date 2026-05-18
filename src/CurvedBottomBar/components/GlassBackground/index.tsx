@@ -46,6 +46,8 @@ const isIOS26OrLater = (): boolean => {
     return false;
   }
   const raw = Platform.Version;
+  // `?? '0'` satisfies tsconfig `noUncheckedIndexedAccess`; at runtime
+  // `String(raw).split('.')` always has at least one element.
   const major =
     typeof raw === 'number'
       ? raw

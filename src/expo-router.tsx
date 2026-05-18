@@ -50,7 +50,7 @@ const buildCurvedTabs = (): AnyNavigator => {
     const missing: AnyNavigator = (() => {
       throw new Error(
         "react-native-curved-bottom-bar/expo-router requires 'expo-router' to be installed. " +
-          'Run `npx expo install expo-router` and ensure it is configured before importing this entry point.'
+          'Run `npx expo install expo-router` before importing this entry point.'
       );
     }) as unknown as AnyNavigator;
     missing.Screen =

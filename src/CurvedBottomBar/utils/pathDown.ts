@@ -1,12 +1,13 @@
-import * as shape from 'd3-shape';
+import { curveBasis, line as d3Line } from 'd3-shape';
 import { scale } from 'react-native-size-scaling';
+
+type Pt = { x: number; y: number };
 
 //** Path Line */
 const line = (width: number, height: number, centerWidth: number) => {
-  const path = (shape as any)
-    .line()
-    .x((d: { x: any }) => d.x)
-    .y((d: { y: any }) => d.y)([
+  const path = d3Line<Pt>()
+    .x((d) => d.x)
+    .y((d) => d.y)([
     { x: width / 2 + scale(centerWidth), y: 0 },
     { x: width, y: 0 },
     { x: width, y: height },
@@ -20,10 +21,9 @@ const line = (width: number, height: number, centerWidth: number) => {
 
 //** Path Line Left*/
 const lineLeft = (width: number, height: number, centerWidth: number) => {
-  const path = (shape as any)
-    .line()
-    .x((d: { x: any }) => d.x)
-    .y((d: { y: any }) => d.y)([
+  const path = d3Line<Pt>()
+    .x((d) => d.x)
+    .y((d) => d.y)([
     { x: scale(centerWidth * 1.9) + scale(10), y: 0 },
     { x: width, y: 0 },
     { x: width, y: height },
@@ -36,10 +36,9 @@ const lineLeft = (width: number, height: number, centerWidth: number) => {
 
 //** Path Line Right*/
 const lineRight = (width: number, height: number, centerWidth: number) => {
-  const path = (shape as any)
-    .line()
-    .x((d: { x: any }) => d.x)
-    .y((d: { y: any }) => d.y)([
+  const path = d3Line<Pt>()
+    .x((d) => d.x)
+    .y((d) => d.y)([
     { x: width, y: 0 },
     { x: width, y: height },
     { x: 0, y: height },
@@ -52,11 +51,10 @@ const lineRight = (width: number, height: number, centerWidth: number) => {
 
 //** Path Line Border Left Right Down */
 const lineBorder = (width: number, height: number, centerWidth: number) => {
-  const border = (shape as any)
-    .line()
-    .x((d: { x: any }) => d.x)
-    .y((d: { y: any }) => d.y)
-    .curve(shape.curveBasis)([
+  const border = d3Line<Pt>()
+    .x((d) => d.x)
+    .y((d) => d.y)
+    .curve(curveBasis)([
     // right
     { x: width / 2 + scale(centerWidth), y: 0 },
     { x: width - scale(20), y: 0 },
@@ -87,11 +85,10 @@ const lineBorderRight = (
   height: number,
   centerWidth: number
 ) => {
-  const border = (shape as any)
-    .line()
-    .x((d: { x: any }) => d.x)
-    .y((d: { y: any }) => d.y)
-    .curve(shape.curveBasis)([
+  const border = d3Line<Pt>()
+    .x((d) => d.x)
+    .y((d) => d.y)
+    .curve(curveBasis)([
     // right
     { x: width, y: 0 },
     { x: width, y: height },
@@ -114,11 +111,10 @@ const lineBorderRight = (
 
 //** Path Line Border Left Right Down */
 const lineBorderLeft = (width: number, height: number, centerWidth: number) => {
-  const border = (shape as any)
-    .line()
-    .x((d: { x: any }) => d.x)
-    .y((d: { y: any }) => d.y)
-    .curve(shape.curveBasis)([
+  const border = d3Line<Pt>()
+    .x((d) => d.x)
+    .y((d) => d.y)
+    .curve(curveBasis)([
     // right
     { x: scale(centerWidth * 1.9) + scale(10), y: 0 },
     { x: width - scale(20), y: 0 },
@@ -145,11 +141,10 @@ const lineCurved = (iPosition: number, height: number, circle: number) => {
   const circleWidth = circle + position;
   const trim = (position + circleWidth) / 2;
 
-  const curved = (shape as any)
-    .line()
-    .x((d: { x: any }) => d.x)
-    .y((d: { y: any }) => d.y)
-    .curve(shape.curveBasis)([
+  const curved = d3Line<Pt>()
+    .x((d) => d.x)
+    .y((d) => d.y)
+    .curve(curveBasis)([
     { x: position - scale(20), y: 0 }, // border center left
     { x: position - scale(10), y: scale(2) },
     { x: position - scale(2), y: scale(10) },

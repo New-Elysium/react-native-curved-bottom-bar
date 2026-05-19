@@ -10,6 +10,7 @@ import React, {
 import {
   Dimensions,
   I18nManager,
+  StyleSheet,
   Text,
   TouchableOpacity,
   View,
@@ -19,6 +20,7 @@ import { useDeviceOrientation } from '../../../useDeviceOrientation';
 import { getPathDown } from '../../utils/pathDown';
 import { getPathUp } from '../../utils/pathUp';
 import { CurvedViewExpoComponent } from '../CurvedView/curvedViewExpo';
+import GlassBackground from '../GlassBackground';
 import type { ICurvedBottomBarRef, NavigatorBottomBarProps } from './model';
 import { styles } from './styles';
 const { width: maxW } = Dimensions.get('window');
@@ -44,6 +46,8 @@ const BottomBarComponent = React.forwardRef<
     shadowStyle,
     borderColor = 'gray',
     borderWidth = 0,
+    enableGlassEffect = false,
+    glassEffectStyle = 'regular',
   } = props;
 
   const [itemLeft, setItemLeft] = useState<any[]>([]);
@@ -273,6 +277,11 @@ const BottomBarComponent = React.forwardRef<
 
       return (
         <View style={[styles.container, style]}>
+          <GlassBackground
+            enabled={enableGlassEffect}
+            glassEffectStyle={glassEffectStyle}
+            style={StyleSheet.absoluteFill}
+          />
           <CurvedViewExpoComponent
             style={shadowStyle}
             width={maxWidth}
@@ -290,7 +299,9 @@ const BottomBarComponent = React.forwardRef<
       _renderTabContainer,
       bgColor,
       d,
+      enableGlassEffect,
       getTabbarHeight,
+      glassEffectStyle,
       isShow,
       maxWidth,
       shadowStyle,

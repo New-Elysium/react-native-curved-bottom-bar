@@ -61,6 +61,8 @@ yarn add @react-navigation/native @react-navigation/bottom-tabs react-native-scr
 | id                 | String                                                          | No        | Optional navigator ID (React Navigation v7)                                         |
 | screenOptions      | BottomTabNavigationOptions or function                          | No        | Default options for all screens (React Navigation v7)                               |
 | backBehavior       | 'firstRoute' \| 'initialRoute' \| 'order' \| 'history' \| 'none' | No      | Behaviour of back button (React Navigation v7). Default: `'firstRoute'`             |
+| enableGlassEffect  | Boolean                                                         | No        | Opt-in to Apple's Liquid Glass material on iOS 26+. See "Liquid Glass" below.       |
+| glassEffectStyle   | 'regular' \| 'clear'                                            | No        | Liquid Glass material variant. Default: `'regular'`                                 |
 
 
 ### CurvedBottomBar.Screen
@@ -387,5 +389,69 @@ export const styles = StyleSheet.create({
 
 ```
 <br />
+
+## Use with expo-router
+
+This package ships an optional entry point for [`expo-router`](https://docs.expo.dev/router/introduction/).
+`expo-router` is not a hard dependency — it is loaded dynamically and only
+required if you import the entry below.
+
+```tsx
+// app/(tabs)/_layout.tsx
+import { CurvedTabs } from 'react-native-curved-bottom-bar/expo-router';
+import { Ionicons } from '@expo/vector-icons';
+import { TouchableOpacity } from 'react-native';
+
+export default function TabLayout() {
+  return (
+    <CurvedTabs
+      initialRouteName="home"
+      type="DOWN"
+      bgColor="white"
+      height={60}
+      circleWidth={50}
+      renderCircle={({ navigate }) => (
+        <TouchableOpacity onPress={() => navigate('camera')}>
+          <Ionicons name="apps-sharp" size={25} color="gray" />
+        </TouchableOpacity>
+      )}
+      tabBar={({ routeName, selectedTab, navigate }) => (
+        <TouchableOpacity onPress={() => navigate(routeName)}>
+          <Ionicons
+            name={routeName === 'home' ? 'home-outline' : 'settings-outline'}
+            size={25}
+            color={routeName === selectedTab ? 'black' : 'gray'}
+          />
+        </TouchableOpacity>
+      )}
+    >
+      <CurvedTabs.Screen name="home" position="LEFT" />
+      <CurvedTabs.Screen name="camera" position="CIRCLE" />
+      <CurvedTabs.Screen name="settings" position="RIGHT" />
+    </CurvedTabs>
+  );
+}
+```
+
+## Liquid Glass (iOS 26+)
+
+Apple introduced the **Liquid Glass** material in iOS 26. Pass
+`enableGlassEffect` on the navigator to opt in. The library uses the optional
+peer dependency [`expo-glass-effect`](https://docs.expo.dev/versions/latest/sdk/glass-effect/)
+to render the material; on Android, on iOS < 26, or when `expo-glass-effect`
+is not installed the prop is a no-op and the bar renders normally.
+
+```sh
+npx expo install expo-glass-effect
+```
+
+```tsx
+<CurvedBottomBarExpo.Navigator
+  enableGlassEffect
+  glassEffectStyle="regular"   // or 'clear'
+  bgColor="transparent"        // important: do not occlude the glass material
+  // ...other props
+/>
+```
 
 [<img src="https://github.com/hoaphantn7604/file-upload/blob/master/document/profile/hoa_phan_dev_banner.png">](https://github.com/hoaphantn7604)

@@ -313,8 +313,17 @@ const BottomBarComponent = React.forwardRef<
   );
 
   const main = useMemo(() => {
+    // React Navigation 8 defaults to native bottom tabs, which would bypass
+    // our custom curved SVG tab bar. Forcing the JavaScript-based ('custom')
+    // implementation keeps rendering identical to v7. The prop is unknown to
+    // (and ignored by) React Navigation 7, so this is safe on both versions.
+    const navigatorProps = {
+      ...props,
+      implementation: props.implementation ?? 'custom',
+    };
+
     return (
-      <Tab.Navigator {...props} tabBar={MyTabBar}>
+      <Tab.Navigator {...navigatorProps} tabBar={MyTabBar}>
         {children?.map((e: any) => {
           const Component = e?.props?.component;
 

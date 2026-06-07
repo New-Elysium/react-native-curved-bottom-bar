@@ -109,11 +109,11 @@
     "@types/react": "17.0.21"
   },
   "peerDependencies": {
-    "@react-navigation/bottom-tabs": "^7.0.0",
+    "@react-navigation/bottom-tabs": "^7.0.0 || ^8.0.0-alpha",
     "react": "*",
     "react-native": "*",
     "react-native-svg": "*",
-    "@react-navigation/native": "^7.0.0",
+    "@react-navigation/native": "^7.0.0 || ^8.0.0-alpha",
     "expo-router": "*",
     "expo-glass-effect": "*"
   },

@@ -28,7 +28,20 @@ or
 yarn add @react-navigation/native @react-navigation/bottom-tabs react-native-screens react-native-safe-area-context react-native-svg
 ```
 
-> **React Navigation v7** — `@react-navigation/bottom-tabs` v7 requires `@react-navigation/native`, `react-native-screens ≥ 4`, and `react-native-safe-area-context ≥ 4`. Follow the [React Navigation getting started guide](https://reactnavigation.org/docs/getting-started) for additional native setup steps.
+> **React Navigation v7 & v8** — this library works with both
+> `@react-navigation/bottom-tabs` **v7** and the **v8** pre-release.
+>
+> - **v7** requires `@react-navigation/native`, `react-native-screens ≥ 4`, and
+>   `react-native-safe-area-context ≥ 4`.
+> - **v8** raises the minimum versions: `react ≥ 19.2`, `react-native ≥ 0.83`
+>   (New Architecture only), `react-native-screens ≥ 4.25`, and
+>   `react-native-safe-area-context ≥ 5.5`.
+>
+> The curved bar always renders through React Navigation's JavaScript-based tab
+> bar, so the visual result is identical on both versions. See
+> [React Navigation v7 vs v8](#react-navigation-v7-vs-v8) below for the details.
+> Follow the [React Navigation getting started guide](https://reactnavigation.org/docs/getting-started)
+> for additional native setup steps.
 
 ## Demo
 
@@ -58,9 +71,10 @@ yarn add @react-navigation/native @react-navigation/bottom-tabs react-native-scr
 | borderColor        | String                                                          | No        | Border color                                                                        |
 | borderWidth        | Number                                                          | No        | Border width                                                                        |
 | bgColor            | String                                                          | No        | Background color of container view                                                  |
-| id                 | String                                                          | No        | Optional navigator ID (React Navigation v7)                                         |
-| screenOptions      | BottomTabNavigationOptions or function                          | No        | Default options for all screens (React Navigation v7)                               |
-| backBehavior       | 'firstRoute' \| 'initialRoute' \| 'order' \| 'history' \| 'none' | No      | Behaviour of back button (React Navigation v7). Default: `'firstRoute'`             |
+| id                 | String                                                          | No        | Optional navigator ID. **React Navigation v7 only** — removed in v8 (ignored).      |
+| screenOptions      | BottomTabNavigationOptions or function                          | No        | Default options for all screens                                                     |
+| backBehavior       | 'firstRoute' \| 'initialRoute' \| 'order' \| 'history' \| 'none' | No      | Behaviour of back button. Default: `'firstRoute'`                                   |
+| implementation     | 'custom' \| 'native'                                            | No        | Tab bar rendering implementation. Default: `'custom'`. Only honored by React Navigation v8; ignored by v7. Keep `'custom'` to render the curved bar. |
 | enableGlassEffect  | Boolean                                                         | No        | Opt-in to Apple's Liquid Glass material on iOS 26+. See "Liquid Glass" below.       |
 | glassEffectStyle   | 'regular' \| 'clear'                                            | No        | Liquid Glass material variant. Default: `'regular'`                                 |
 
@@ -78,6 +92,39 @@ yarn add @react-navigation/native @react-navigation/bottom-tabs react-native-scr
 | Function           | Params                        | Description                                                                               |
 | ------------------ | ----------------------------- | ----------------------------------------------------------------------------------------- |
 | setVisible         | Boolean                       | Used to hide/show the tab bar. Ex: ref.current.setVisible(false)                          |
+
+### React Navigation v7 vs v8
+
+This library is compatible with both `@react-navigation/bottom-tabs` **v7** and
+the **v8** pre-release. The peer dependency range allows
+`^7.0.0 || ^8.0.0-alpha`.
+
+**Compatibility is achieved without breaking v7.** The single behavioural change
+v8 introduces for this library is that v8 renders *native* bottom tabs by
+default, which would bypass the custom curved SVG tab bar. To prevent that, the
+navigator always passes `implementation="custom"` to React Navigation, which
+forces the JavaScript-based tab bar on v8. The `implementation` prop does not
+exist in v7 and is simply ignored there, so **existing v7 apps are unaffected**
+and the curved bar looks identical on both versions.
+
+Things to be aware of when running on **v8**:
+
+- **Minimum versions are higher.** v8 requires `react ≥ 19.2`,
+  `react-native ≥ 0.83` (New Architecture only — the old architecture is no
+  longer supported), `react-native-screens ≥ 4.25`, and
+  `react-native-safe-area-context ≥ 5.5`. If you cannot meet these, stay on v7.
+- **The `id` prop is removed in v8.** React Navigation v8 dropped the navigator
+  `id` prop (use a parent screen name with `navigation.getParent('ScreenName')`
+  instead). On v7 the `id` prop still works; on v8 it is ignored.
+- **`liquid glass` material.** v8 ships its own iOS 26 liquid-glass support via
+  `@callstack/liquid-glass`. This library's separate `enableGlassEffect` prop
+  (backed by `expo-glass-effect`) remains independent and optional.
+
+If you do not pass `implementation`, it defaults to `'custom'`, which is the
+correct value for the curved bar on both v7 and v8. Passing
+`implementation="native"` on v8 will render React Navigation's native tab bar
+and bypass the curved design, so only do that intentionally.
+
 
 ### Use in Expo
 ![](https://github.com/hoaphantn7604/file-upload/blob/master/document/navigationbar/react-native-curved-bottom-bar-1.png)

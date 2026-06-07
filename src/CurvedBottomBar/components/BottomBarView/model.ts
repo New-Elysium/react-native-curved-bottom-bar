@@ -50,8 +50,20 @@ export interface NavigatorBottomBarProps {
   enableGlassEffect?: boolean;
   /** Variant of the Liquid Glass material to use. Defaults to `'regular'`. */
   glassEffectStyle?: GlassEffectStyle;
+  /**
+   * Rendering implementation forwarded to `@react-navigation/bottom-tabs`.
+   *
+   * React Navigation 8 renders *native* bottom tabs by default, which would
+   * bypass this library's custom SVG curved `tabBar`. We therefore default to
+   * `'custom'` (the JavaScript-based implementation) so the curved bar renders
+   * identically on v7 and v8. The `implementation` prop does not exist in
+   * React Navigation 7 and is harmlessly ignored there. Override with
+   * `'native'` only if you intend to bypass the curved bar.
+   */
+  implementation?: 'custom' | 'native';
   // React Navigation Tab.Navigator pass-through props
   children?: React.ReactNode;
+  /** @deprecated Removed in React Navigation 8; only honored on v7. */
   id?: string;
   screenOptions?:
     | BottomTabNavigationOptions

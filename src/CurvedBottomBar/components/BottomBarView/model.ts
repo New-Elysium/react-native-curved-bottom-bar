@@ -14,7 +14,7 @@ export interface ICurvedBottomBarRef {
 type CircleRenderProps = {
   routeName: string;
   selectedTab: string;
-  navigate: (selectedTab: string) => void;
+  navigate: (selectedTab: string, params?: Record<string, unknown>) => void;
 };
 
 /**

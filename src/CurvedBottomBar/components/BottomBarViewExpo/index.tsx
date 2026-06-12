@@ -82,9 +82,9 @@ const BottomBarComponent = React.forwardRef<
       return renderCircle({
         routeName: getTab,
         selectedTab: focusedTab,
-        navigate: (selectTab: string) => {
+        navigate: (selectTab: string, params?: Record<string, unknown>) => {
           if (selectTab) {
-            navigate(selectTab);
+            navigate(selectTab, params, { merge: true });
           }
         },
       });
@@ -181,11 +181,12 @@ const BottomBarComponent = React.forwardRef<
                 {tabBar({
                   routeName,
                   selectedTab: focusedTab,
-                  navigate: (selectTab: string) => {
+                  navigate: (
+                    selectTab: string,
+                    params?: Record<string, unknown>
+                  ) => {
                     if (selectTab !== focusedTab) {
-                      navigation.navigate(routeName, undefined, {
-                        merge: true,
-                      });
+                      navigation.navigate(selectTab, params, { merge: true });
                     }
                   },
                 })}

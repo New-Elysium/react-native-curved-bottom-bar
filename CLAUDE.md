@@ -6,7 +6,7 @@ This file is a guide for AI coding assistants (Claude, Copilot, etc.) working in
 
 ## Project Overview
 
-`react-native-curved-bottom-bar` is a React Native library that renders a curved/notched bottom navigation bar. It wraps `@react-navigation/bottom-tabs` and uses `react-native-svg` with `d3-shape` to draw a custom SVG path for the curved notch.
+`@psync/curved-bottom-bar` is a React Native library that renders a curved/notched bottom navigation bar. It wraps `@react-navigation/bottom-tabs` and uses `react-native-svg` with `d3-shape` to draw a custom SVG path for the curved notch.
 
 Two flavours are exported:
 - `CurvedBottomBar` — uses `react-native`'s `View` with native shadow support (iOS/Android CLI).
@@ -61,23 +61,23 @@ All commands run from the repository root unless noted.
 
 ```bash
 # Install dependencies
-yarn bootstrap        # installs root + example deps
+bun run bootstrap        # installs root + example deps
 
 # Type-check (no emit)
-yarn typecheck        # runs: tsc --noEmit
+bun run typecheck        # runs: tsc --noEmit
 
 # Lint
-yarn lint             # runs: eslint "**/*.{js,ts,tsx}"
+bun run lint             # runs: eslint "**/*.{js,ts,tsx}"
 
 # Tests
-yarn test             # runs: jest
+bun run test             # runs: jest
 
 # Build the library (outputs to lib/)
-yarn prepack          # runs: bob build  (react-native-builder-bob)
+bun run prepack          # runs: bob build  (react-native-builder-bob)
 
 # Run the example app
-yarn example android
-yarn example ios
+bun run example android
+bun run example ios
 ```
 
 ---

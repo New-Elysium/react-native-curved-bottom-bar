@@ -1,6 +1,6 @@
 {
-  "name": "react-native-curved-bottom-bar",
-  "version": "3.5.1",
+  "name": "@psync/curved-bottom-bar",
+  "version": "1.0.0",
   "description": "A high performance, beautiful and fully customizable curved bottom navigation bar for React Native.",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -45,9 +45,9 @@
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
     "prepack": "bob build",
     "release": "release-it",
-    "example": "yarn --cwd example",
-    "bootstrap": "yarn example && yarn install",
-    "clean": "example/android/build example/android/app/build example/ios/build"
+    "example": "bun --cwd example",
+    "bootstrap": "bun install --cwd example && bun install",
+    "clean": "rm -rf example/android/build example/android/app/build example/ios/build"
   },
   "keywords": [
     "react-native",
@@ -58,15 +58,16 @@
     "tab-bar",
     "tabbar"
   ],
-  "repository": "https://github.com/hoaphantn7604/react-native-curved-bottom-bar",
-  "author": "Hoa Phan <hoaphantn7604@gmail.com> (https://github.com/hoaphantn7604)",
+  "repository": "https://github.com/XChikuX/react-native-curved-bottom-bar",
+  "author": "Psync, LLC <oss@psync.club> (https://github.com/XChikuX)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/hoaphantn7604/react-native-curved-bottom-bar/issues"
+    "url": "https://github.com/XChikuX/react-native-curved-bottom-bar/issues"
   },
-  "homepage": "https://github.com/hoaphantn7604/react-native-curved-bottom-bar#readme",
+  "homepage": "https://github.com/XChikuX/react-native-curved-bottom-bar#readme",
   "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
   },
   "dependencies": {
     "d3-shape": "^3.2.0",
@@ -106,7 +107,11 @@
     }
   },
   "resolutions": {
-    "@types/react": "17.0.21"
+    "@types/react": "~19.2.17",
+    "@babel/plugin-transform-react-display-name": "7.25.9"
+  },
+  "overrides": {
+    "@babel/plugin-transform-react-display-name": "7.25.9"
   },
   "peerDependencies": {
     "@react-navigation/bottom-tabs": "^7.0.0 || ^8.0.0-alpha",
@@ -118,8 +123,9 @@
     "expo-glass-effect": "*"
   },
   "engines": {
-    "node": ">= 18.0.0"
+    "node": ">= 24.0.0"
   },
+  "packageManager": "bun@1.3.13",
   "jest": {
     "preset": "react-native",
     "modulePathIgnorePatterns": [

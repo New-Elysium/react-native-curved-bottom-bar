@@ -1,6 +1,6 @@
 ![](https://github.com/hoaphantn7604/file-upload/blob/master/document/navigationbar/react-native-curved-bottom-bar-demo.png)
 
-# react-native-curved-bottom-bar
+# @psync/curved-bottom-bar
 A high performance, beautiful and fully customizable curved bottom navigation bar for React Native.
 Implemented using [react-native-svg](https://github.com/react-native-svg/react-native-svg) and [@react-navigation/bottom-tabs](https://reactnavigation.org/docs/bottom-tab-navigator).
 
@@ -12,11 +12,11 @@ If you love this library, give us a star, you will be a ray of sunshine in our l
 [React Native Template](https://github.com/hoaphantn7604/react-native-template-components) with a beautiful UI.
 ## Getting started
 ```js
-npm install react-native-curved-bottom-bar --save
+npm install @psync/curved-bottom-bar --save
 ```
 or
 ```js
-yarn add react-native-curved-bottom-bar
+bun add @psync/curved-bottom-bar
 ```
 Now we need to install the required peer dependencies:
 
@@ -137,7 +137,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import { CurvedBottomBarExpo } from 'react-native-curved-bottom-bar';
+import { CurvedBottomBarExpo } from '@psync/curved-bottom-bar';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { NavigationContainer } from '@react-navigation/native';
 
@@ -292,7 +292,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import { CurvedBottomBar } from 'react-native-curved-bottom-bar';
+import { CurvedBottomBar } from '@psync/curved-bottom-bar';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { NavigationContainer } from '@react-navigation/native';
 
@@ -445,7 +445,7 @@ required if you import the entry below.
 
 ```tsx
 // app/(tabs)/_layout.tsx
-import { CurvedTabs } from 'react-native-curved-bottom-bar/expo-router';
+import { CurvedTabs } from '@psync/curved-bottom-bar/expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native';
 

@@ -183,8 +183,7 @@ const BottomBarComponent = React.forwardRef<
                   selectedTab: focusedTab,
                   navigate: (selectTab: string) => {
                     if (selectTab !== focusedTab) {
-                      navigation.navigate({
-                        name: routeName,
+                      navigation.navigate(routeName, undefined, {
                         merge: true,
                       });
                     }

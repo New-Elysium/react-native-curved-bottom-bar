@@ -4,7 +4,7 @@
  * Usage (app/_layout.tsx or app/(tabs)/_layout.tsx):
  *
  * ```tsx
- * import { CurvedTabs } from 'react-native-curved-bottom-bar/expo-router';
+ * import { CurvedTabs } from '@psync/curved-bottom-bar/expo-router';
  *
  * export default function TabLayout() {
  *   return (
@@ -49,7 +49,7 @@ const buildCurvedTabs = (): AnyNavigator => {
   if (!withLayoutContext) {
     const missing: AnyNavigator = (() => {
       throw new Error(
-        "react-native-curved-bottom-bar/expo-router requires 'expo-router' to be installed. " +
+        "@psync/curved-bottom-bar/expo-router requires 'expo-router' to be installed. " +
           'Run `npx expo install expo-router` before importing this entry point.'
       );
     }) as unknown as AnyNavigator;

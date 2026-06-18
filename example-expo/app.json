@@ -1,0 +1,21 @@
+{
+  "expo": {
+    "name": "curved-bottom-bar-expo",
+    "slug": "curved-bottom-bar-expo",
+    "version": "0.0.1",
+    "orientation": "portrait",
+    "scheme": "curvedbottombar",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.psync.curvedbottombarexpo"
+    },
+    "android": {
+      "package": "com.psync.curvedbottombarexpo"
+    },
+    "plugins": ["expo-router"]
+  }
+}

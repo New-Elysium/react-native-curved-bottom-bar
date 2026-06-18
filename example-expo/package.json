@@ -1,0 +1,31 @@
+{
+  "name": "@psync/curved-bottom-bar-example-expo",
+  "version": "0.0.1",
+  "private": true,
+  "main": "expo-router/entry",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
+    "prebuild": "expo prebuild"
+  },
+  "dependencies": {
+    "@psync/curved-bottom-bar": "file:./local-lib",
+    "@react-navigation/bottom-tabs": "^7.18.2",
+    "@react-navigation/native": "^7.3.3",
+    "d3-shape": "^3.2.0",
+    "expo": "~55.0.0",
+    "expo-linking": "^56.0.14",
+    "expo-router": "~55.0.16",
+    "expo-status-bar": "~55.0.6",
+    "react": "19.2.0",
+    "react-native": "0.83.6",
+    "react-native-safe-area-context": "~5.6.2",
+    "react-native-screens": "~4.23.0",
+    "react-native-size-scaling": "^0.5.4",
+    "react-native-svg": "^15.15.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.0"
+  }
+}

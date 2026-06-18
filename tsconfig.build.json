@@ -4,5 +4,5 @@
   "compilerOptions": {
     "rootDir": "./src"
   },
-  "exclude": ["example", "**/__tests__"]
+  "exclude": ["example", "example-expo", "**/__tests__"]
 }

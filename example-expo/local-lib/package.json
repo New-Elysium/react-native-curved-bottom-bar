@@ -1,0 +1,23 @@
+{
+  "name": "@psync/curved-bottom-bar",
+  "version": "1.0.0",
+  "main": "index.js",
+  "module": "index.js",
+  "types": "index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "react-native": "./index.tsx",
+      "import": "./index.js",
+      "require": "./index.js"
+    },
+    "./expo-router": {
+      "types": "./expo-router.d.ts",
+      "react-native": "./expo-router.tsx",
+      "import": "./expo-router.js",
+      "require": "./expo-router.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "react-native": "index.tsx"
+}
